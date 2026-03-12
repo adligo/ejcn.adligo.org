@@ -73,9 +73,9 @@ A nested complex EJCM message, note how size is used with the email text command
 
 ```
 24{ "cmd":"sendEmail" }
-36{ "cmd":"emailText", "size": 16 }
+37{ "part":"emailText", "size": 16 }
 Some plain text
-42{ "cmd":"emailAttachment", "size": 53 }
+43{ "part":"emailAttachment", "size": 53 }
 &@#LK!#J%LKHASR@#LKJ
 -- not a real image #$%LK#J%^
 
