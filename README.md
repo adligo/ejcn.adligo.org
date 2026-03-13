@@ -129,6 +129,14 @@ A example with an optimized, extended 3 line header.
 
 EJCM is designed to be compatible with just about anything, including [REST](rest), [XML schemas](#xml), [JSON schemas](#json-schemas), [JSON Lines](#json-lines), [CSV](#csv) files, [Google Protocol Buffers](#google-protocol-buffers), binary images, zip files that include some of the above in a simple format that is highly configurable and extensible.
 
+### Transport Specific EJCM
+
+[ESTN](https://github.com/adligo/estn.adligo.org) is the extension that is specific for the transport layer.
+
+### EJCM Schemas
+
+EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and DoS (DDoS) attacks vs services that accept or provide EJCM data.
+
 ### Commentary
 
 EJCM started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://datatracker.ietf.org/doc/draft-adligo-hybi-asbp/). Then for a time, I debated on whether it would use [classification markup notation CMN](https://github.com/adligo/cmn.adligo.org). 
