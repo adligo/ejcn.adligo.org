@@ -2,7 +2,7 @@
 
 ### Abstract
 
-EJCN is a simple, binary, hybrid [UTF-8 text](#utf8), context-free and content-sensitive grammar for encoding data. It is a data serialization format for files and messages similar to and inspired by JSON (lines) and XML. It is built around a simple header and body structure; however, it is recursive so that the body may have an EJCN structure as well.
+EJCN is a simple, binary, hybrid [UTF-8 text](#utf8), context-free and content-sensitive grammar for encoding data. It is a data serialization format for files and messages similar to and inspired by [JSON](#json) [(lines)](#json-lines) and [XML](#xml). It is built around a simple header and body structure; however, it is recursive so that the body may have an EJCN structure as well.
 
 ### Structure Overview
 
@@ -10,7 +10,8 @@ EJCN is comprised of header and body sections. The header section is extremely f
 
 ### Header Details
 
-The header is comprised of one or more lines, each terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) value of 10 (0x0A in [hexadecimal](#hexadecimal)). Each line MAY have an optimization for parsing, or MAY be nearly identical to the [JSON lines](#json-lines) model. However, this format has been optimized slightly for parsing when number prefixes exist. To clarify, the first character of each line in the header must be one of the following:
+The header is comprised of one or more lines, each line MUST contain valid [JSON](#json) similar to the [JSON lines](#json-lines) convention.  In addition, each line MUST be
+terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) value of 10 (0x0A in [hexadecimal](#hexadecimal)). Each line MAY have an optimization integer or [Ten64](https://github.com/adligo/ten64.adligo.org) prefix for parsing, or MAY be nearly identical to the [JSON lines](#json-lines) model. However, this format has been optimized slightly for parsing when number prefixes exist. To clarify, the first character of each line in the header must be one of the following:
 
 ##### Header Line First Characters
 
@@ -20,6 +21,8 @@ The header is comprised of one or more lines, each terminated by a [UNIX Line Fe
 * **[** The left square bracket identifies this line as a [JSON](#json) line.
 
 The purpose of including the number of bytes per line, either with Ten64 or Arabic numerals, is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
+
+In addition, the valid JSON MUST immediately follow any number prefix, Arabic numeral, or Ten64. In other words, there must not be any white space between the prefix and the JSON. 
 
 ```
 3{}
