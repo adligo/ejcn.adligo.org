@@ -127,7 +127,7 @@ A example with an optimized, extended 3 line header.
 ### Compatibility with other technologies.
 
 
-EJCM is designed to be compatible with just about anything, including [REST](rest), [XML schemas](#xml), [JSON schemas](#json-schemas), [CSV](#csv) files, [Google Protocol Buffers](#google-protocol-buffers), binary images, zip files that include some of the above in a simple format that is highly configurable and extensible.
+EJCM is designed to be compatible with just about anything, including [REST](rest), [XML schemas](#xml), [JSON schemas](#json-schemas), [JSON Lines](#json-lines), [CSV](#csv) files, [Google Protocol Buffers](#google-protocol-buffers), binary images, zip files that include some of the above in a simple format that is highly configurable and extensible.
 
 ### Commentary
 
