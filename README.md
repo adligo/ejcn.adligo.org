@@ -57,11 +57,11 @@ If the first line in this header is a number, indicating that this header has a 
 
 ### Extending the keys
 
-It is generally recommended NOT to include some information about the data in the headers like "dataType":"JSON", but instead simply route your requests to parts of your application or services that know they are going to receive JSON, or a EJCM message or tree.
+It is generally recommended NOT to include some information about the data in the headers like "dataType":"JSON", but instead simply route your requests to parts of your application or services that know they are going to receive JSON, or a EJCM data tree.
 
 ### Examples
 
-The simplest EJCM text message, with a empty header;
+The simplest EJCM data, with a empty header;
 
 ```
 {}
@@ -69,7 +69,7 @@ Some plain text
 
 ```
 
-A nested complex EJCM message, note how size is used with the email text command in order to split out binary that happens later in the nested EJCM message.
+Complex EJCM data, note how size is used with the email text command in order to split out binary that happens later in the nested EJCM body.
 
 ```
 24{ "cmd":"sendEmail" }
