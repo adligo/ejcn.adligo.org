@@ -20,7 +20,7 @@ terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) va
 * **{** The left curly brace identifies this line as a [JSON](#json) line.
 * **[** The left square bracket identifies this line as a [JSON](#json) line.
 
-The purpose of including the number of bytes per line, either with Ten64 or Arabic numerals, is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
+The purpose of including the number of bytes per line, either with [Ten64](https://github.com/adligo/ten64.adligo.org) or Arabic numerals, is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
 
 In addition, the valid JSON MUST immediately follow any number prefix, Arabic numeral, or [Ten64](https://github.com/adligo/ten64.adligo.org). In other words, there must not be any white space between the prefix and the JSON. 
 
