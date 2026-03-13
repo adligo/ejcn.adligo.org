@@ -45,15 +45,19 @@ A single line or pair of lines is expected, however this can be changed with the
 
 Although all header keys are optional, these are the main conventions.
 
+##### headers
+
+The optional <b>'headers'</b> key identifies the integer number of lines with JSON that are part of the header.
+
+The header may be comprise of multiple JSON lines, each MAY have the optimization of a integer number prefix either using Arabic Numerals or [Ten64](https://github.com/adligo/ten64.adligo.org).
+
 ##### size
 
-The optional <b>'size'</b> key identifies an integer, the number of bytes in the body. This can be particularly useful when transporting arbitrary bytes. In particular, for images and other binary data
+The optional <b>'size'</b> key identifies an integer, the number of bytes in the body. This can be particularly useful when transporting arbitrary bytes. In particular, for images and other binary data.  The <b>'size'</b> key is mutually exclusive with the <b>'lines'</b> key, in other words: they SHOULD NOT be used at the same time.
 
 ##### lines
 
-The optional <b>'lines'</b> key identifies the number of lines or line pairs in the header.
-
-If the first line in this header is a number, indicating that this header has a line pair for the first section, then this indicates the number of line pairs. If the first line in this header is a JSON line, then this indicates the number of JSON lines in the header.
+The optional <b>'lines'</b> key identifies the number of lines a text formatted body.  The <b>'lines'</b> key is mutually exclusive with the <b>'size'</b> key, in other words: they SHOULD NOT be used at the same time.
 
 ### Extending the keys
 
@@ -95,7 +99,7 @@ A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the low
 A example with an extended 3 line header.
 
 ```
-{ "cmd":"sendData", "lines": 3 }
+{ "cmd":"sendData", "headers": 3 }
 { "dateSent": "2026-03-10" }
 { "sequenceNbr": 3 }
 <?xml version="1.0" encoding="UTF-8"?>
@@ -111,7 +115,7 @@ A example with an extended 3 line header.
 A example with an optimized, extended 3 line header.
 
 ```
-35{ "cmd":"sendData", "lines": 3 }
+37{ "cmd":"sendData", "headers": 3 }
 31{ "dateSent": "2026-03-10" }
 23{ "sequenceNbr": 3 }
 <?xml version="1.0" encoding="UTF-8"?>
