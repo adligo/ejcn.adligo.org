@@ -69,7 +69,7 @@ Some plain text
 
 ```
 
-A nested complex EJCM message, note how size is used with the email text command in order to split out binary that happens later in the nested ESTN message.
+A nested complex EJCM message, note how size is used with the email text command in order to split out binary that happens later in the nested EJCM message.
 
 ```
 24{ "cmd":"sendEmail" }
