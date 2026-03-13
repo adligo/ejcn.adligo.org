@@ -52,7 +52,7 @@ Although all header keys are optional, these are the main conventions.
 
 The optional <b>'headers'</b> key identifies the integer number of lines with JSON that are part of the header.
 
-The header may be comprise of multiple JSON lines, each MAY have the optimization of a integer number prefix either using Arabic Numerals or [Ten64](https://github.com/adligo/ten64.adligo.org).
+The header may be comprise of multiple [JSON lines](#json-lines), each MAY have the optimization of a integer number prefix either using Arabic Numerals or [Ten64](https://github.com/adligo/ten64.adligo.org).
 
 ##### size
 
