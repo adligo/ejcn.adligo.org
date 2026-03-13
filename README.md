@@ -2,7 +2,7 @@
 
 ### Abstract
 
-EJCN is a simple, binary, hybrid [UTF-8 text](#utf8), context-free and content-sensitive grammar for encoding messages that will be transported to and from services. It is a data serialization format for files and messages similar to and inspired by JSON and XML. It is built around a simple header and body structure; however, it is recursive so that the body may have an EJCN structure as well.
+EJCN is a simple, binary, hybrid [UTF-8 text](#utf8), context-free and content-sensitive grammar for encoding data. It is a data serialization format for files and messages similar to and inspired by JSON (lines) and XML. It is built around a simple header and body structure; however, it is recursive so that the body may have an EJCN structure as well.
 
 ### Structure Overview
 
