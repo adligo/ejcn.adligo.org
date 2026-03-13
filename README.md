@@ -81,7 +81,7 @@ Some plain text
 
 ```
 
-A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the lowercase l after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCM parsers are NOT likely to have support for Ten64.
+A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the lowercase l after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCM parsers are NOT likely to have support for [Ten64](https://github.com/adligo/ten64.adligo.org).
 
 ```
 #l{ "cmd":"sendData" }
