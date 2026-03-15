@@ -58,6 +58,10 @@ A single line or list of lines is expected, however this can be changed with the
 
 Although all header keys are optional, these are the main conventions.
 
+##### class
+
+This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which always deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return data from various classes, which would likely benefit from the <b>'class'</b> key.
+
 ##### headers
 
 The optional <b>'headers'</b> key identifies the integer number of lines with JSON that are part of the header.
