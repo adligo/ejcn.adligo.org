@@ -20,7 +20,7 @@ terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) va
 * **{** The left curly brace identifies this line as a [JSON](#json) line.
 * **[** The left square bracket identifies this line as a [JSON](#json) line.
 * **//** The slash characters identifies this header line as a single line comment line.  This character was chosen because of the compatibility with the // code comment convention in many languages.
-* **<!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the '-->' ending tag MUST be the last non whitespace text on the last line of the comment.
+* **&lt;!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the '-->' ending tag MUST be the last non whitespace text on the last line of the comment.
 
 ```
 // one line comments go here
