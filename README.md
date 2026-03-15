@@ -141,6 +141,24 @@ A example with an optimized, extended 3 line header.
 
 ```
 
+A example with an optimized, header with optimized comments.
+
+```
+23{ "cmd":"sendText" }
+14//A comment
+Hey you guys!
+```
+
+A example with an optimized, header optimized comments, note the J (45) from [Ten64](https://github.com/adligo/ten64.adligo.org) includes the return character bytes.
+
+```
+23{ "cmd":"sendText" }
+#J<!--
+a optimized multiple line comment 
+-->
+Hey you guys!
+```
+
 ### Compatibility with other technologies.
 
 
