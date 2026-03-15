@@ -15,11 +15,16 @@ terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) va
 
 ##### Header Line First Characters
 
-* **0-9** Arabic numerals are a number prefix which identify the number of bytes in this line, for single line entities, or multi-line comment.
-* **#** The pound symbol identifies this number prefix as a [Ten64](https://github.com/adligo/ten64.adligo.org) number, which identifies the number of bytes in this line for single line entities, or multi-line comment.
+* **0-9** Arabic numerals are a number prefix which identify the number of bytes in this line, for single line entities, or multi-line comment.  The Arabic numerals MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
+<br/><br/>
+* **#** The pound symbol identifies this number prefix as a [Ten64](https://github.com/adligo/ten64.adligo.org) number, which identifies the number of bytes in this line for single line entities, or multi-line comment.  The [Ten64](https://github.com/adligo/ten64.adligo.org) number MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
+<br/><br/>
 * **{** The left curly brace identifies this line as a [JSON](#json) line.
+<br/><br/>
 * **[** The left square bracket identifies this line as a [JSON](#json) line.
+<br/><br/>
 * **//** The slash characters identifies this header line as a single line comment line.  This character was chosen because of the compatibility with the // code comment convention in many languages.
+<br/><br/>
 * **&lt;!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the '-->' ending tag MUST be the last non whitespace text on the last line of the comment.
 
 ```
@@ -60,7 +65,7 @@ Although all header keys are optional, these are the main conventions.
 
 ##### class
 
-This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which always deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return data from various classes, which would likely benefit from the <b>'class'</b> key.
+This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which always deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'class'</b> key.
 
 ##### headers
 
