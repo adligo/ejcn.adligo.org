@@ -15,10 +15,20 @@ terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) va
 
 ##### Header Line First Characters
 
-* **0-9** Arabic numerals are a number prefix which identify the number of bytes in this line.
-* **#** The pound symbol identifies this number prefix as a [Ten64](https://github.com/adligo/ten64.adligo.org) number, which identifies the number of bytes in this line.
+* **0-9** Arabic numerals are a number prefix which identify the number of bytes in this line, for single line entities, or multi-line comment.
+* **#** The pound symbol identifies this number prefix as a [Ten64](https://github.com/adligo/ten64.adligo.org) number, which identifies the number of bytes in this line for single line entities, or multi-line comment.
 * **{** The left curly brace identifies this line as a [JSON](#json) line.
 * **[** The left square bracket identifies this line as a [JSON](#json) line.
+* **//** The slash characters identifies this header line as a single line comment line.  This character was chosen because of the compatibility with the // code comment convention in many languages.
+* **<!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the '-->' ending tag MUST be the last non whitespace text on the last line of the comment.
+
+```
+// one line comments go here
+<!-- comments go here --> 
+<!-- 
+other comments go here
+--> 
+```
 
 The purpose of including the number of bytes per line, either with [Ten64](https://github.com/adligo/ten64.adligo.org) or Arabic numerals, is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
 
@@ -38,11 +48,11 @@ Plain Text Message
 
 ##### Use of ASCI-7/UTF-8
 
-Although not a hard requirement, the use of only [ASCII-7](#ascii)/[UTF-8](#utf8) (NOT UTF-8 extended characters) is highly recommended in the header. This simply maps bytes to characters and reduces processing time.
+Although not a hard requirement, the use of only [ASCII-7](#ascii)/[UTF-8](#utf8) (NOT UTF-8 extended characters) is highly recommended in the header.  This simply maps bytes to characters and reduces processing time.
 
 ### Header Lines
 
-A single line or pair of lines is expected, however this can be changed with the [lines header key](#lines).
+A single line or list of lines is expected, however this can be changed with the [headers header key](#headers).  Each header line MAY EITHER consist of valid JSON, or valid ESTN comments.  
 
 ### Header Keys
 
@@ -142,7 +152,9 @@ EJCM is designed to be compatible with just about anything, including [REST](res
 
 ### EJCM Schemas
 
-EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and DoS (DDoS) attacks vs services that accept or provide EJCM data.
+EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org) greatly increased the clarity and ability to perform simple validations via [ECMA Script](#ecma-script) specific regular expressions.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and [OWASP DoS](#owasp-dos)/[DDoS](#owasp-dos) attacks vs services that accept or provide EJCM data.
+
+
 
 ### Commentary
 
@@ -166,11 +178,19 @@ It was also, partially inspired by the [JSON lines project](https://jsonlines.or
 - [Wikipedia](https://en.wikipedia.org/wiki/ASCII)
 - [Table](https://www.asciitable.com/)
 
+###### ECMA Script
+
+- [ECMA International](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
+- [Wikipedia](https://en.wikipedia.org/wiki/ECMAScript)
+- [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/JavaScript_technologies_overview)
+
+
 ###### CSV
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Comma-separated_values)
 - [What is a CSV File?](https://www.businessinsider.com/reference/what-is-csv-file)
 - [Dr. Nesvit](https://www.youtube.com/watch?v=O0-T-LQgc_o)
+
 
 ###### Google Protocol Buffers
 
@@ -217,6 +237,12 @@ It was also, partially inspired by the [JSON lines project](https://jsonlines.or
 - [GitHub](https://cswr.github.io/JsonSchema/spec/definitions_references/)
 
 ###### Octal
+
+###### OWasp DoS
+
+- [OWasp DoS](https://owasp.org/www-community/attacks/Denial_of_Service)
+- [NCSC](https://www.ncsc.gov.uk/collection/denial-service-dos-guidance-collection)
+- [Cloudflare DDoS](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)
 
 ###### Pub/Sub
 
