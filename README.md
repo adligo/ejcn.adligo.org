@@ -25,7 +25,7 @@ terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) va
 <br/><br/>
 * **//** The slash characters identifies this header line as a single line comment line.  This character was chosen because of the compatibility with the // code comment convention in many languages.
 <br/><br/>
-* **&lt;!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the '-->' ending tag MUST be the last non whitespace text on the last line of the comment.
+* **&lt;!--** The less than character identifies this header line as a multiple line comment line.  This indicates a HTML style comment.  Note the <b>'-->'</b> ending tag MUST be the last non whitespace text on the last line of the comment.
 
 ```
 // one line comments go here
@@ -57,7 +57,7 @@ Although not a hard requirement, the use of only [ASCII-7](#ascii)/[UTF-8](#utf8
 
 ### Header Lines
 
-A single line or list of lines is expected, however this can be changed with the [headers header key](#headers).  Each header line MAY EITHER consist of valid JSON, or valid ESTN comments.  
+A single line or list of lines is expected, however this can be changed with the [headers header key](#headers).  Each header line MAY EITHER consist of valid JSON, or valid EJCN comments.  
 
 ### Header Keys
 
