@@ -191,7 +191,7 @@ EJCM started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://
 Then for a few days it was synonymous with [ESTN](https://github.com/adligo/estn.adligo.org).
 It was also, partially inspired by the [JSON lines project](https://jsonlines.org/).
 
-On 2026-03-22 I was able to sucessfully submit a request to reserve the <b>.ejcn</b> file extension here, with the respective [values](iana_log/2026-03-22_ATTEMPT.md);
+On 2026-03-22 I was able to successfully submit a request to reserve the <b>.ejcn</b> file extension here, with the respective [values](iana_log/2026-03-22_ATTEMPT.md);
 
 - [https://www.iana.org/form/media-types](https://www.iana.org/form/media-types)
 
