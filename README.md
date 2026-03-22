@@ -11,7 +11,7 @@ EJCN is comprised of header and body sections. The header section is extremely f
 ### Header Details
 
 The header is comprised of one or more lines, each line MUST contain valid [JSON](#json) similar to the [JSON lines](#json-lines) convention.  In addition, each line MUST be
-terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) value of 10 (0x0A in [hexadecimal](#hexadecimal)). Each line MAY have an optimization integer or [Ten64](https://github.com/adligo/ten64.adligo.org) prefix for parsing, or MAY be nearly identical to the [JSON lines](#json-lines) model. However, this format has been optimized slightly for parsing when number prefixes exist. To clarify, the first character of each line in the header must be one of the following:
+terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) value of 10 (0x0A in [hexadecimal](#hexadecimal)). Each line MAY have an optimization integer or [Ten64](https://github.com/adligo/ten64.adligo.org) prefix for parsing, or MAY be nearly identical to the [JSON lines](#json-lines) model. However, this format has been optimized slightly for parsing when number prefixes exist. To clarify, the first character of each line in the header MUST be one of the following:
 
 ##### Header Line First Characters
 
@@ -181,13 +181,19 @@ EJCM is designed to be compatible with just about anything, including [REST](res
 
 EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org) greatly increased the clarity and ability to perform simple validations via [ECMA Script](#ecma-script) specific regular expressions.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and [OWASP DoS](#owasp-dos)/[DDoS](#owasp-dos) attacks vs services that accept or provide EJCM data.
 
+### IANA Considerations
 
+IANA number 1.3.6.1.4.1.33097.8.3, attempted to obtain file extension reservation <b>.ejcn</b>.
 
 ### Commentary
 
 EJCM started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://datatracker.ietf.org/doc/draft-adligo-hybi-asbp/). Then for a time, I debated on whether it would use [classification markup notation CMN](https://github.com/adligo/cmn.adligo.org). 
 Then for a few days it was synonymous with [ESTN](https://github.com/adligo/estn.adligo.org).
 It was also, partially inspired by the [JSON lines project](https://jsonlines.org/).
+
+On 2026-03-22 I was able to sucessfully submit a request to reserve the <b>.ejcn</b> file extension here, with the respective [values](iana_log/2026-03-22_ATTEMPT.md);
+
+- [https://www.iana.org/form/media-types](https://www.iana.org/form/media-types)
 
 # References 
 
@@ -294,6 +300,10 @@ It was also, partially inspired by the [JSON lines project](https://jsonlines.or
 - [IBM](https://www.ibm.com/docs/en/i/7.4.0?topic=programming-how-sockets-work)
 - [Oracle](https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html)
 - [MIT](https://web.mit.edu/6.031/www/fa17/classes/24-sockets-networking/)
+
+###### Text Media Type
+
+- [Application Media Type rfc2046](https://www.rfc-editor.org/rfc/rfc2046.html)
 
 ###### UTF8
 
