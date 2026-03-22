@@ -185,6 +185,10 @@ EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://
 
 IANA number 1.3.6.1.4.1.33097.8.3, attempted to obtain file extension reservation <b>.ejcn</b>.
 
+### Discussion Channel
+
+ -[https://discord.gg/6BNgJwBMzd](https://discord.gg/6BNgJwBMzd)
+
 ### Commentary
 
 EJCM started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://datatracker.ietf.org/doc/draft-adligo-hybi-asbp/). Then for a time, I debated on whether it would use [classification markup notation CMN](https://github.com/adligo/cmn.adligo.org). 
