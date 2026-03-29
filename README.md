@@ -10,14 +10,14 @@ EJCN is comprised of header and body sections. The header section is extremely f
 
 ### Header Details
 
-The header is comprised of one or more lines, each line MUST contain valid [JSON](#json) similar to the [JSON lines](#json-lines) convention.  In addition, each line MUST be
+The header object instance is comprised of one or more lines, each line MUST contain valid [JSON](#json) similar to the [JSON lines](#json-lines) convention.  In addition, each line MUST be
 terminated by a [UNIX Line Feed '\n'](#ascii), [ASCII](#ascii)/[UTF-8](#utf8) value of 10 (0x0A in [hexadecimal](#hexadecimal)). Each line MAY have an optimization integer or [Ten64](https://github.com/adligo/ten64.adligo.org) prefix for parsing, or MAY be nearly identical to the [JSON lines](#json-lines) model. However, this format has been optimized slightly for parsing when number prefixes exist. To clarify, the first character of each line in the header MUST be one of the following:
 
 ##### Header Line First Characters
 
-* **0-9** Arabic numerals are a number prefix which identify the number of bytes in this line, for single line entities, or multi-line comment.  The Arabic numerals MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
+* **0-9** [Modern Western Numerals](https://github.com/adligo/ten64.adligo.org#modern-western-numeral-system) are a number prefix which identify the number of bytes in this line, for single line entities, or multi-line comment.  The [Modern Western Numerals](https://github.com/adligo/ten64.adligo.org#modern-western-numeral-system) MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
 <br/><br/>
-* **#** The pound symbol identifies this number prefix as a [Ten64](https://github.com/adligo/ten64.adligo.org) number, which identifies the number of bytes in this line for single line entities, or multi-line comment.  The [Ten64](https://github.com/adligo/ten64.adligo.org) number MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
+* **#** The pound symbol identifies this number prefix as a [Ten64](#ten64) number, which identifies the number of bytes in this line for single line entities, or multi-line comment.  The [Ten64](https://github.com/adligo/ten64.adligo.org) number MUST represent an integer, and MUST be followed by either JSON or EJCN Comment start characters from this section.
 <br/><br/>
 * **{** The left curly brace identifies this line as a [JSON](#json) line.
 <br/><br/>
@@ -35,9 +35,9 @@ other comments go here
 --> 
 ```
 
-The purpose of including the number of bytes per line, either with [Ten64](https://github.com/adligo/ten64.adligo.org) or Arabic numerals, is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
+The purpose of including the number of bytes per line, either with [Ten64](https://github.com/adligo/ten64.adligo.org) or [Modern Western Numerals](https://github.com/adligo/ten64.adligo.org#modern-western-numeral-system), is simply an optimization for EJCN parsers. For example, the three in the following code identifies that the subsequent line with '3{}' only has 3 bytes;
 
-In addition, the valid JSON MUST immediately follow any number prefix, Arabic numeral, or [Ten64](https://github.com/adligo/ten64.adligo.org). In other words, there must not be any white space between the prefix and the JSON. 
+In addition, the valid JSON MUST immediately follow any number prefix, [Modern Western Numerals](https://github.com/adligo/ten64.adligo.org#modern-western-numeral-system), or [Ten64](https://github.com/adligo/ten64.adligo.org). In other words, there must not be any white space between the prefix and the JSON. 
 
 ```
 3{}
@@ -57,37 +57,54 @@ Although not a hard requirement, the use of only [ASCII-7](#ascii)/[UTF-8](#utf8
 
 ### Header Lines
 
-A single line or list of lines is expected, however this can be changed with the [headers header key](#headers).  Each header line MAY EITHER consist of valid JSON, or valid EJCN comments.  
+A single line or list of lines is expected, however this can be changed with the [headers headerLines key](#header-lines).  Each header line MAY EITHER consist of valid JSON, or valid EJCN comments.  
 
 ### Header Keys
 
 Although all header keys are optional, these are the main conventions.
 
+##### bodyClass
+
+This optional <b>'bodyClass'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  This field identifies the how the bytes in the body MUST be interpreted.
+The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'bodyClass'</b> key.  Here the bodyClass is the class of the body, so only one class per header is allowed.
+
 ##### class
 
-This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which always deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'class'</b> key.
+This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which always deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'class'</b> key.  Here the class is the class of the header, so only one class per header is allowed.
 
-##### headers
+##### headerLines
 
-The optional <b>'headers'</b> key identifies the integer number of lines with JSON that are part of the header.
+The optional <b>'headerLines'</b> key, a positive JSON integer identifies the integer number of lines with JSON that are part of the header.  Note, comment lines are considered part of the <b>'headerLines'</b> when they immediately follow the initial JSON line style header.  When <b>'headerLines'</b> is omitted, the default value is one.
 
-The header may be comprise of multiple [JSON lines](#json-lines), each MAY have the optimization of a integer number prefix either using Arabic Numerals or [Ten64](https://github.com/adligo/ten64.adligo.org).
+The header may be comprise of multiple [JSON lines](#json-lines), each MAY have the optimization of a integer number prefix either using [Modern Western Numerals](https://github.com/adligo/ten64.adligo.org#modern-western-numeral-system) or [Ten64](https://github.com/adligo/ten64.adligo.org).
 
 ##### size
 
-The optional <b>'size'</b> key identifies an integer, the number of bytes in the body. This can be particularly useful when transporting arbitrary bytes. In particular, for images and other binary data.  The <b>'size'</b> key is mutually exclusive with the <b>'lines'</b> key, in other words: they SHOULD NOT be used at the same time.
+The optional <b>'size'</b> key, a positive integer identifies the number of bytes in the body. This can be particularly useful when transporting arbitrary bytes. In particular, for images and other binary data.  The <b>'size'</b> key is mutually exclusive with the keys <b>'size64','lines' and 'lines64'</b> keys, in other words: they MUST NOT be used at the same time.
+
+##### size64
+
+The optional <b>'size'</b> key identifies, a [Ten64 String](https://github.com/adligo/ten64.adligo.org) representing a positive integer, the number of bytes in the body. This can be particularly useful when transporting arbitrary bytes. In particular, for images and other binary data.  The <b>'size64'</b> key is mutually exclusive with the keys <b>'size','lines' and 'lines64'</b> keys, in other words: they MUST NOT be used at the same time.
 
 ##### lines
 
-The optional <b>'lines'</b> key identifies the number of lines a text formatted body.  The <b>'lines'</b> key is mutually exclusive with the <b>'size'</b> key, in other words: they SHOULD NOT be used at the same time.
+The optional <b>'lines'</b> key, a positive JSON integer, identifies the number of lines in a text formatted body.  The <b>'lines'</b> key is mutually exclusive with the keys <b>'size','size64' and 'lines64'</b> keys, in other words: they MUST NOT be used at the same time.
+
+##### lines64
+
+The optional <b>'lines64'</b> key, a [Ten64 String](https://github.com/adligo/ten64.adligo.org) representing a positive integer, identifies the number of lines in a text formatted body.  The <b>'lines64'</b> key is mutually exclusive with the keys <b>'size','size64' and 'lines'</b> keys, in other words: they MUST NOT be used at the same time.
 
 ### Extending the keys
 
-It is generally recommended NOT to include some information about the data in the headers like "dataType":"JSON", but instead simply route your requests to parts of your application or services that know they are going to receive JSON, or a EJCM data tree.
+It is generally recommended NOT to include some information about the data in the headers like "dataType":"JSON", but instead simply route your requests to parts of your application or services that know they are going to receive JSON, or a EJCN data tree.
+
+# EJCN Sequences
+
+EJCN bodies MAY be comprised of a list of EJCN segments.  However, when this is used all EJCN segments MUST ALWAYS include information about the length of the segment [i.e. [size](#size), [size64](#size64), [lines](#lines) or [lines64](#lines64)]!  Only the last EJCN segment in an EJCN sequence MAY ommit these fields.  Root EJCN segments MAY also omit these fields.
 
 ### Examples
 
-The simplest EJCM data, with a empty header;
+The simplest EJCN data, with a empty header;
 
 ```
 {}
@@ -95,7 +112,7 @@ Some plain text
 
 ```
 
-Complex EJCM data, note how size is used with the email text command in order to split out binary that happens later in the nested EJCM body.
+Complex EJCN data, note how size is used with the email text command in order to split out binary that happens later in the nested EJCN body.
 
 ```
 24{ "cmd":"sendEmail" }
@@ -107,10 +124,10 @@ Some plain text
 
 ```
 
-A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the lowercase l after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCM parsers are NOT likely to have support for [Ten64](https://github.com/adligo/ten64.adligo.org).
+A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the dollar sign $ after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCM parsers are NOT likely to have support for [Ten64](https://github.com/adligo/ten64.adligo.org).
 
 ```
-#l{ "cmd":"sendData" }
+#${ "cmd":"sendData" }
 { "name": "George", 
   "age": 23,
   "height": 5.75
@@ -171,15 +188,15 @@ Hey you guys!
 ### Compatibility with other technologies.
 
 
-EJCM is designed to be compatible with just about anything, including [REST](rest), [XML schemas](#xml), [JSON schemas](#json-schemas), [JSON Lines](#json-lines), [CSV](#csv) files, [Google Protocol Buffers](#google-protocol-buffers), binary images, zip files that include some of the above in a simple format that is highly configurable and extensible.
+EJCN is designed to be compatible with just about anything, including [REST](rest), [XML schemas](#xml), [FIX protocol encoding](#fix), [JSON schemas](#json-schemas), [JSON Lines](#json-lines), [CSV](#csv) files, [Google Protocol Buffers](#google-protocol-buffers), binary images, zip files that include some of the above in a simple format that is highly configurable and extensible.
 
-### Transport Specific EJCM
+### Transport Specific EJCN
 
 [ESTN](https://github.com/adligo/estn.adligo.org) is the extension that is specific for the transport layer.
 
-### EJCM Schemas
+### EJCN Schemas
 
-EJCM data can be more narrowly classified with schemas.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org) greatly increased the clarity and ability to perform simple validations via [ECMA Script](#ecma-script) specific regular expressions.  [EJCM Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and [OWASP DoS](#owasp-dos)/[DDoS](#owasp-dos) attacks vs services that accept or provide EJCM data.
+EJCN data can be more narrowly classified with schemas.  [EJCN Schemas](https://github.com/adligo/ejcn_schemas.adligo.org) greatly increased the clarity and ability to perform simple validations via [ECMA Script](#ecma-script) specific regular expressions.  [EJCN Schemas](https://github.com/adligo/ejcn_schemas.adligo.org), are encouraged to prevent injection and [OWASP DoS](#owasp-dos)/[DDoS](#owasp-dos) attacks vs services that accept or provide EJCN data.
 
 ### IANA Considerations
 
@@ -191,7 +208,7 @@ IANA number 1.3.6.1.4.1.33097.8.3, attempted to obtain file extension reservatio
 
 ### Commentary
 
-EJCM started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://datatracker.ietf.org/doc/draft-adligo-hybi-asbp/). Then for a time, I debated on whether it would use [classification markup notation CMN](https://github.com/adligo/cmn.adligo.org). 
+EJCN started out as part of [ASBP (Asynchronous Services Bus Protocol)](https://datatracker.ietf.org/doc/draft-adligo-hybi-asbp/). Then for a time, I debated on whether it would use [classification markup notation CMN](https://github.com/adligo/cmn.adligo.org). 
 Then for a few days it was synonymous with [ESTN](https://github.com/adligo/estn.adligo.org).
 It was also, partially inspired by the [JSON lines project](https://jsonlines.org/).
 
@@ -228,6 +245,9 @@ On 2026-03-22 I was able to successfully submit a request to reserve the <b>.ejc
 - [What is a CSV File?](https://www.businessinsider.com/reference/what-is-csv-file)
 - [Dr. Nesvit](https://www.youtube.com/watch?v=O0-T-LQgc_o)
 
+###### FIX
+
+FIX Trading Community, "What is FIX?", FIX Trading Community v.o.z., [Online]. Available: [https://www.fixtrading.org/what-is-fix/](https://www.fixtrading.org/what-is-fix/). [Accessed: 29-Mar-2026].
 
 ###### Google Protocol Buffers
 
@@ -304,6 +324,10 @@ On 2026-03-22 I was able to successfully submit a request to reserve the <b>.ejc
 - [IBM](https://www.ibm.com/docs/en/i/7.4.0?topic=programming-how-sockets-work)
 - [Oracle](https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html)
 - [MIT](https://web.mit.edu/6.031/www/fa17/classes/24-sockets-networking/)
+
+###### Ten64
+
+Morgan, S. and Ismo, R. "Ten64: Text Encoded Numbers as Base 64 bit", adligo/ten64.adligo.org, GitHub Repository, March 2026, [https://github.com/adligo/ten64.adligo.org](https://github.com/adligo/ten64.adligo.org).
 
 ###### Text Media Type
 
