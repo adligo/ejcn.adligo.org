@@ -66,11 +66,11 @@ Although all header keys are optional, these are the main conventions.
 ##### bodyClass
 
 This optional <b>'bodyClass'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  This field identifies the how the bytes in the body MUST be interpreted.
-The <b>'bodyClass'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'bodyClass'</b> key.  Here the bodyClass is the class of the body, so only one class per header is allowed.
-
+The <b>'bodyClass'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs MAY return or accept data from various classes, which would  benefit from the <b>'bodyClass'</b> key.  Here the bodyClass is the class of the body, so only one class per header is allowed.
+git 
 ##### class
 
-This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which SHOULD usually deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs may return or accept data from various classes, which would likely benefit from the <b>'class'</b> key.  Here the class is the class of the header, so only one class per header is allowed.
+This optional <b>'class'</b> key identifies a string which represents a [EJCN Schema fully qualified class name](https://github.com/adligo/ejcn_schemas.adligo.org#fully-qualified-class-loader-name-space-names).  The <b>'class'</b> key is NOT recommended for API's which SHOULD usually deliver or accept the same class.  The <b>'class'</b> key is recommended for data which MAY be of different classes, this is usually disk data.  However, some APIs MAY return or accept data from various classes, which would benefit from the <b>'class'</b> key.  Here the class is the class of the header, so only one class per header is allowed.
 
 ##### headerLines
 
@@ -124,7 +124,7 @@ Some plain text
 
 ```
 
-A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the dollar sign $ after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCM parsers are NOT likely to have support for [Ten64](https://github.com/adligo/ten64.adligo.org).
+A example with [Ten64](https://github.com/adligo/ten64.adligo.org), note the dollar sign $ after the pound symbol (#) in the first line turns into a 21. Also note, that all EJCN parsers are NOT likely to have support for [Ten64](https://github.com/adligo/ten64.adligo.org).
 
 ```
 #${ "cmd":"sendData" }
