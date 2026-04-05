@@ -1,5 +1,19 @@
 # Extensible JSON Classification Notation (EJCN)
 
+## STATUS: De-prioritized
+
+Due to the ambiguity caused in part by the ECMA Script specification identified in JSON numbers detailed here; <br/>
+- [https://www.ietf.org/archive/id/draft-morgan-ten64-00.html#commentary](https://www.ietf.org/archive/id/draft-morgan-ten64-00.html#commentary)
+
+Work on this project has been de-prioritized and should shift to; <br/>
+- [https://github.com/adligo/xcn.adligo.org](https://github.com/adligo/xcn.adligo.org)
+
+Note: De-prioritization does NOT mean abandonment.  Should the JSON community become interested in adding a JSON v2 with additional types and clarification, or in other words a discrete decimal number system for serialization like ten10b;
+
+- [https://github.com/adligo/ten10b_v1.adligo.org](https://github.com/adligo/ten10b_v1.adligo.org)
+
+We would become interested in JSON again and resume work on this project.
+
 ### Abstract
 
 EJCN is a simple, binary, hybrid [UTF-8 text](#utf8), context-free and content-sensitive grammar for encoding data. It is a data serialization format for files and messages similar to and inspired by [JSON](#json) [(lines)](#json-lines) and [XML](#xml). It is built around a simple header and body structure; however, it is recursive so that the body may have an EJCN structure as well.
