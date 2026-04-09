@@ -6,7 +6,7 @@ Due to the ambiguity caused in part by the ECMA Script specification identified 
 - [https://www.ietf.org/archive/id/draft-morgan-ten64-00.html#commentary](https://www.ietf.org/archive/id/draft-morgan-ten64-00.html#commentary)
 
 Work on this project has been de-prioritized and should shift to; <br/>
-- [https://github.com/adligo/xcn.adligo.org](https://github.com/adligo/xcn.adligo.org)
+- [https://github.com/adligo/xcn_v1.adligo.org](https://github.com/adligo/xcn_v1.adligo.org)
 
 Note: De-prioritization does NOT mean abandonment.  Should the JSON community become interested in adding a JSON v2 with additional types and clarification, or in other words a discrete decimal number system for serialization like ten10b;
 
